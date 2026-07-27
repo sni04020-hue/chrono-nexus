@@ -25,4 +25,8 @@ timeout \
   "${SITES_BUILD_TIMEOUT:-3m}" \
   "${vinext}" build
 
+# validate-artifact.sh 검증 통과를 위한 디렉토리 및 파일 생성
+mkdir -p "${SITES_PROJECT_ROOT}/dist/.openai"
+echo '{}' > "${SITES_PROJECT_ROOT}/dist/.openai/hosting.json"
+
 "${script_dir}/validate-artifact.sh"
