@@ -1,7 +1,14 @@
 import vinext from "vinext";
 import { defineConfig } from "vite";
-import hostingConfig from "./.openai/hosting.json";
 import { sites } from "./build/sites-vite-plugin";
+
+// hosting.json 파일이 없더라도 빌드가 깨지지 않도록 예외 처리
+let hostingConfig: { d1?: any; r2?: any } = {};
+try {
+  hostingConfig = require("./.openai/hosting.json");
+} catch {
+  hostingConfig = {};
+}
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   "00000000-0000-4000-8000-000000000000";
